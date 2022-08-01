@@ -4,7 +4,7 @@ A  C++ library to convert numbers from word representation to numbers.
 ## Building with CMake 
 - create a build folder and navigate to it
 ```
-mkdir buid <br/>
+mkdir buid 
 cd build
 ```
 - build and compile
