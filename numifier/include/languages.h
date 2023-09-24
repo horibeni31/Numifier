@@ -1,13 +1,18 @@
-#ifndef NUMIFIER_H
-#define NUMIFIER_H
+#pragma once
+#include <unordered_map>
 #include <string>
-#include <vector>
-#include <map>
-#include <iostream>
-#include "languages.h"
 namespace numifier
 {
-    static std::map<int, std::map<std::string, int>> lookup = {
+
+    enum class LANGUAGE
+    {
+        ENGLISH,
+        HUNGARIAN,
+        ROMAN_NUMERALS
+    };
+
+
+    static std::unordered_map<LANGUAGE, std::unordered_map<std::string, int>> lookup = {
 
         {
             numifier::LANGUAGE::ENGLISH,
@@ -73,6 +78,7 @@ namespace numifier
                 {"kilenc", 9},
                 {"tíz", 10},
                 {"tizen", 10},
+                {"husz", 20},
                 {"huszon", 20},
                 {"harminc", 30},
                 {"negyven", 40},
@@ -90,20 +96,4 @@ namespace numifier
     };
 
  
-    class WordParser
-    {
-    private:
-        
-        std::vector<int> segmentateString(std::string &number, numifier::LANGUAGE lang);
-        int constructNumber(std::vector<int> &vec, int start, int end, numifier::LANGUAGE lang);
-        int possibleRoots(std::string &buff, numifier::LANGUAGE lang);
-
-    public:
-        int parseNumber(std::string &number,numifier::LANGUAGE lang=numifier::LANGUAGE::ENGLISH);
-        
-    };
-
-    
-
 }
-#endif
