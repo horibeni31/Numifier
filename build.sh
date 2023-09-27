@@ -1,4 +1,4 @@
 mkdir build
 cmake -S. -Bbuild
 cmake --build build
-ctest --test-dir build/tests
+ctest --output-on-failure --test-dir build/tests 
