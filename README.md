@@ -33,8 +33,7 @@ int number = parser.parseNumber(str,numifier::LANGUAGE::ROMAN_NUMERALS);
 ## The algorithm
 ### Step 1: Format the input string
 Remove the spaces,hyphens and all the "and" words from the string
-for example the string "one thousand three hundred twenty-four" will become "onethousandthreehundredtwentyfour"  
-(not yet implemented)
+for example the string "one thousand three hundred and twenty-four" will become "onethousandthreehundredtwentyfour"  
 ### Step 2 Segmentate the input string
 
 -Split the input string along the selected language's trivial numbers:  
