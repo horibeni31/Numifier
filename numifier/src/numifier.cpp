@@ -1,5 +1,7 @@
 #include "numifier.h"
 
+#include <algorithm>
+#include <regex>
 int numifier::WordParser::constructNumber(std::vector<int> &vec, int start, int end, numifier::LANGUAGE lang)
 {
     int max = start;
@@ -72,14 +74,22 @@ std::vector<int> numifier::WordParser::segmentateString(const std::string &numbe
     }
     return segments;
 }
-
-int numifier::WordParser::parseNumber(std::string &number, numifier::LANGUAGE lang)
+std::string numifier::WordParser::preprocessString(const std::string &str)
 {
-    std::vector<int> segments = segmentateString(number, lang);
+    std::regex and_separator("\\sand\\s");
+    std::regex space_separator("\\s+");
+    return regex_replace(regex_replace(str, and_separator, ""), space_separator, "");
+}
+
+std::optional<int> numifier::WordParser::parseNumber(const std::string &number, numifier::LANGUAGE lang)
+{
+    std::string preprocessed = preprocessString(number);
+    std::cout << preprocessed << std::endl;
+    std::vector<int> segments = segmentateString(preprocessed, lang);
 
     if (segments.size() == 0)
     {
-        return -1;
+        return {};
     }
     int num = constructNumber(segments, 0, segments.size(), lang);
     return num;
