@@ -12,9 +12,9 @@ int numifier::WordParser::constructNumber(std::vector<int> &vec, int start, int 
         if (vec[i] > vec[max])
             max = i;
     }
-    if (lang == numifier::Language::ROMAN_NUMERALS)
+        if (lang == numifier::Language::ROMAN_NUMERALS)
     {
-        int left = start == max ? 0 : constructNumber(vec, start, max, lang);
+                int left = start == max ? 0 : constructNumber(vec, start, max, lang);
         int right = end - 1 == max ? 0 : constructNumber(vec, max + 1, end, lang);
         return vec[max] - left + right;
     }

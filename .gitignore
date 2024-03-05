@@ -12,3 +12,8 @@ _deps
 build
 .vscode
 .cache
+
+
+# Added by cargo
+
+/target
